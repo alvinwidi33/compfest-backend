@@ -38,10 +38,9 @@ class RegisterView(generics.CreateAPIView):
         user.verification_token = verification_token
         user.save()
 
-
         customer_data = {
             'user': user.user_id,
-            'status': 'Not Member',  # or any other default status
+            'status': 'Not Member',  
         }
         customer_serializer = CustomerSerializerPost(data=customer_data)
         if customer_serializer.is_valid(raise_exception=True):
