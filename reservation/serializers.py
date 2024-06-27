@@ -7,9 +7,9 @@ class ReservationGet(serializers.ModelSerializer):
     branch = BranchSerializer()
     class Meta:
         model = Reservation
-        fields = ("id","name","branch","type_of_service","datetime_reserve","is_done")
+        fields = ("id","name","branch","type_of_service","datetime_start","datetime_end","is_done")
 
 class ReservationPost(serializers.ModelSerializer):
     class Meta:
         model = Reservation
-        fields = ("id","name","branch","type_of_service","datetime_reserve","is_done")
+        fields = ("id","name","branch","type_of_service","datetime_start","datetime_end","is_done")

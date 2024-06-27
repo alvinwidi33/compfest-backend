@@ -6,3 +6,5 @@
 /branch/__pycache__/
 /reservation/__pycache__/
 /sea_salon/__pycache__/
+/feedback/migrations/
+/feedback/__pycache__/

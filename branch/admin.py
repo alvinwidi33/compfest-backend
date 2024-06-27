@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Branch
+@admin.register(Branch)
+class BranchAdmin(admin.ModelAdmin):
+    fields=("branch_name","branch_location","image")
+    list_display = ("id","branch_name","branch_location","image","opening_time","closing_time")
