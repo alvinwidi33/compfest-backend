@@ -43,8 +43,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'users',
     'reservation',
-    'branch',
-    'feedback'
+    'branch'
 ]
 
 MIDDLEWARE = [

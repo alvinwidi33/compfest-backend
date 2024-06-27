@@ -53,7 +53,7 @@ def update_reserve(request, id):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['PATCH'])
-def done_reserve(request, id):
+def patch_reserve(request, id):
     try:
         reservation = Reservation.objects.get(id=str(id))
     except Reservation.DoesNotExist:
