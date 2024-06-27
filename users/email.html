@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verify your account</title>
+    <style>
+        .email-image {
+            display: block;
+            margin: 0 auto;
+            max-width: 30%; 
+            height: auto; 
+        }
+        h1 {
+            font-family: 'Clash Display', sans-serif; 
+            color: #020030;
+        }
+        
+        p {
+            margin-bottom: 10px; 
+        }
+        
+        a.button {
+            display: inline-block;
+            background-color: #020030;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+        
+        a.button:hover {
+            background-color: #8A60FF;
+        }
+        
+        a.button:active {
+            background-color: #020030;
+        }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+</head>
+<body>
+    <div style="max-width: 600px; margin: 0 auto; border: 2px solid #020030; padding: 20px; border-radius: 10px; background-color: #FEDACC; text-align: center;">
+        <img src="https://drive.google.com/uc?id=1nkx8kvAo76n8_ekmExzvZZtnY4HEspKR" alt="Verification Image" class="email-image">
+        <h1>Verifikasi Akun Anda</h1>
+        <p>Selamat Datang <strong>{{ user.full_name }}</strong>,</p>
+        <p>Terima kasih sudah membuat akun, tekan tombol di bawah ini untuk verifikasi akun Anda:</p>
+        <p>
+            <a href="{{ verification_url }}" class="button">Verifikasi Akun</a>
+        </p>
+        <p>Jika Anda tidak membuat akun ini, abaikan email ini</p>
+    </div>
+</body>
+</html>

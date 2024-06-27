@@ -1,0 +1,8 @@
+/venv/
+/users/migrations/
+/branch/migrations/
+/reservation/migrations/
+/users/__pycache__/
+/branch/__pycache__/
+/reservation/__pycache__/
+/sea_salon/__pycache__/
