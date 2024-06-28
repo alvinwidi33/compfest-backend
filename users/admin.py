@@ -9,8 +9,8 @@ class AdminAdmin(admin.ModelAdmin):
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    fields = ("user_id","full_name","email","password","role","phone_number","is_verified")
-    list_display= ("user_id","full_name","email","password","role","phone_number","is_verified")
+    fields = ("user_id","full_name","email","username","password","role","phone_number","is_verified")
+    list_display= ("user_id","full_name","email","username","password","role","phone_number","is_verified")
 
 @admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
