@@ -172,5 +172,5 @@ def logout(request):
 @permission_classes([is_admin])
 def get_list_customer(request):
     customers = Customer.objects.all()
-    serializer = CustomerSerializerGet(users, many=True)
+    serializer = CustomerSerializerGet(customers, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
