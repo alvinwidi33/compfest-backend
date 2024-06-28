@@ -7,5 +7,6 @@ urlpatterns = [
     path('verify-email/<str:token>/', VerifyEmailView.as_view(), name='verify-email'),
     path('get-list-user/', get_list_user),
     path('get-user-by-token/',get_user_by_token),
-    path('update-status/',update_user_status)
+    path('update-status/',update_user_status),
+    path('logout/',logout)
 ]
