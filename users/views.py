@@ -82,8 +82,14 @@ class VerifyEmailView(APIView):
     
 class CustomObtainAuthToken(ObtainAuthToken):
     def post(self, request, *args, **kwargs):
-        response = super(CustomObtainAuthToken, self).post(request, *args, **kwargs)
-        user = authenticate(username=request.data.get('username'), password=request.data.get('password'))
+        username_or_email = request.data.get('username_or_email')
+        password = request.data.get('password')
+        user = None
+        if '@' in username_or_email:
+            user = authenticate(email=username_or_email, password=password)
+        else:
+            user = authenticate(username=username_or_email, password=password)
+
         if user is not None:
             if not user.is_verified:
                 return Response({'error': 'User is not verified.'}, status=status.HTTP_403_FORBIDDEN)
