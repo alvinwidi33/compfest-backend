@@ -8,5 +8,6 @@ urlpatterns = [
     path('get-list-user/', get_list_user),
     path('get-user-by-token/<str:token_key>/',get_user_by_token),
     path('update-status/<str:customer_id>/',update_user_status),
+    path('get-list-customer/',get_list_customer),
     path('logout/',logout)
 ]
