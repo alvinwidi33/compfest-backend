@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
-
+from django.contrib.auth.backends import ModelBackend
 from sea_salon import settings 
 from .models import User,Customer, Admin
 from .serializers import (
@@ -80,15 +80,25 @@ class VerifyEmailView(APIView):
         user.save()
         return render(request, 'verified.html')
     
+class EmailOrUsernameModelBackend(ModelBackend):
+    def authenticate(self, request, username=None, password=None, **kwargs):
+        try:
+            if '@' in username:
+                user = User.objects.get(email=username)
+            else:
+                user = User.objects.get(username=username)
+        except User.DoesNotExist:
+            return None
+
+        if user.check_password(password):
+            return user
+        return None
+
 class CustomObtainAuthToken(ObtainAuthToken):
     def post(self, request, *args, **kwargs):
         username_or_email = request.data.get('username_or_email')
         password = request.data.get('password')
-        user = None
-        if '@' in username_or_email:
-            user = authenticate(email=username_or_email, password=password)
-        else:
-            user = authenticate(username=username_or_email, password=password)
+        user = EmailOrUsernameModelBackend().authenticate(request, username=username_or_email, password=password)
 
         if user is not None:
             if not user.is_verified:
