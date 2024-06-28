@@ -5,5 +5,5 @@ urlpatterns=[
     path('add-branch/',add_branch),
     path('get-list-branch/',get_list_branch),
     path('update-branch/',update_branch),
-    path('get-branch-detial/<str:id>/',get_branch_detail)
+    path('get-branch-detail/<str:id>/',get_branch_detail)
 ]
