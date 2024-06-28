@@ -3,5 +3,5 @@ from .models import Reservation
 # Register your models here.
 @admin.register(Reservation)
 class ReservationAdmin(admin.ModelAdmin):
-    fields=("name","branch","type_of_service","datetime_start","datetime_end","is_done","rating","feedback")
-    list_display = ("id","name","branch","type_of_service","datetime_start","datetime_end","is_done","rating","feedback")
+    fields=("name","branch","type_of_service","datetime_start","datetime_end","is_done","is_cancel","rating","feedback")
+    list_display = ("id","name","branch","type_of_service","datetime_start","datetime_end","is_done","is_cancel","rating","feedback")

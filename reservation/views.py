@@ -4,10 +4,14 @@ from rest_framework.decorators import api_view
 from rest_framework import status
 from .models import Reservation
 from .serializers import ReservationGet, ReservationPost
+from django.db.models import Q
 
 @api_view(['GET'])
-def get_list_reserve_all(request):
-    reservation = Reservation.objects.all()
+def get_list_reserve_feedback(request):
+    reservation = Reservation.objects.filter(
+        rating__gt=0,
+        feedback__isnull=False
+    )
     serializer = ReservationGet(reservation, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -19,33 +23,23 @@ def get_list_reserve_branch(request, branch):
 
 @api_view(['GET'])
 def get_list_reserve_customer_history(request, name):
-    reservation = Reservation.objects.filter(name=str(name))
+    reservation = Reservation.objects.filter(
+        Q(name=str(name)) & (Q(is_done=True) | Q(is_cancel=True))
+    )
     serializer = ReservationGet(reservation, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 @api_view(['GET'])
 def get_list_reserve_customer(request, name):
-    reservation = Reservation.objects.filter(name=str(name), is_done=False) 
+    reservation = Reservation.objects.filter(
+        Q(name=str(name)) & (Q(is_done=False) | Q(is_cancel=False))
+    )
     serializer = ReservationGet(reservation, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 @api_view(['POST'])
 def add_reserve(request):
     serializer = ReservationPost(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-@api_view(['PUT'])
-def update_reserve(request, id):
-    try:
-        reservation = Reservation.objects.get(id=str(id))
-    except Reservation.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-    serializer = ReservationPost(reservation, data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)

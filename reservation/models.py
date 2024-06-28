@@ -16,6 +16,7 @@ class Reservation(models.Model):
     datetime_start = models.DateTimeField(default=timezone.now)
     datetime_end = models.DateTimeField(default=timezone.now)
     is_done = models.BooleanField(default=False)
+    is_cancel = models.BooleanField(default=False)
     rating = models.IntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(5)],default=0
     )
