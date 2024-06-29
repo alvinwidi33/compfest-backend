@@ -31,10 +31,10 @@ def get_list_reserve_customer_history(request, name):
 
 @api_view(['GET'])
 def get_list_reserve_customer(request, name):
-    reservation = Reservation.objects.filter(
-        Q(name=str(name)) & (Q(is_done=False) | Q(is_cancel=False))
+    reservations = Reservation.objects.filter(
+        Q(name=str(name)) & ~(Q(is_done=True) | Q(is_cancel=True))
     )
-    serializer = ReservationGet(reservation, many=True)
+    serializer = ReservationGet(reservations, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 @api_view(['POST'])
