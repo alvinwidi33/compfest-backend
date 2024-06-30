@@ -1,6 +1,6 @@
 # Compfest Backend
 
-###Django Rest Framework (Python)
+### Django Rest Framework (Python)
 Cara run backend
 1. Buka terminal pada directory
 2. Ketik ```venv\Scripts\activate```
