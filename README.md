@@ -17,4 +17,4 @@ pip install djangorestframework
 pip install psycopg2-binary
 pip install django-cors-headers
 ```
-4. Lebih baik buka disini, sudah saya deploy dengan link **https://compfest-be.vercel.app**
+4. Lebih baik buka disini, sudah saya deploy dengan link **https://compfest-be.vercel.app** (sesuaikan linknya)
