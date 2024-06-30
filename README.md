@@ -3,10 +3,11 @@
 ### Django Rest Framework (Python)
 Cara run backend
 1. Buka terminal pada directory
-2. Ketik ```venv\Scripts\activate```
-3. Run dengan command ```python manage.py runserver```
-4. Lalu Anda buka di browser **http://127.0.0.1:8000/**
-5. Sesuaikan link yang ada karena ini hanya API backend untuk frontend
+2. Ketik ```python -m venv venv```
+3. Ketik ```venv\Scripts\activate```
+4. Run dengan command ```python manage.py runserver```
+5. Lalu Anda buka di browser **http://127.0.0.1:8000/**
+6. Sesuaikan link yang ada karena ini hanya API backend untuk frontend
 
 Note : 
 1. Harus sudah menginstall Django dan Python
